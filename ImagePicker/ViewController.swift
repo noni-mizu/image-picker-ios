@@ -12,7 +12,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var imgeView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
 
     
@@ -40,6 +40,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.delegate = self
         bottomTextField.delegate = self
         
+        // align manually, since the dictionary overrides text field properties
+        topTextField.textAlignment = .Center
+        bottomTextField.textAlignment = .Center
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,7 +60,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // retreives image from the image picker, puts in your imagePickerView
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imgeView.image = image
+            imageView.image = image
             dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -71,7 +75,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Move the view up/down when the keyboard pops up over lower text field
     func keyboardWillShow(notification: NSNotification) {
         let userInfo: [NSObject : AnyObject] = notification.userInfo!
-        
         let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
         let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
         
@@ -137,6 +140,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
     }
+    
+    // CREATE MEME OBJECT, SAVE IT
+    struct Meme {
+        var textField: String
+        var image: UIImage
+        var memedImage: UIImage
+    }
+    
+    // Create a UIImage that combines the Image View and the Textfields
+    func generateMemedImage() -> UIImage {
+        // Hide toolbar and navbar
+        navigationController?.navigationBarHidden = true
+        navigationController?.setToolbarHidden(true, animated: false)
+        
+        // render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // Show toolbar and navbar, again
+        navigationController?.navigationBarHidden = false
+        navigationController?.setToolbarHidden(false, animated: false)
+        
+        return memedImage
+    }
+    
+    // saves the new meme
+    func save() {
+        //Create the meme, by using the struct variables
+        _ = Meme(textField: topTextField.text!, image: imageView.image!, memedImage: generateMemedImage())
+    }
+    
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)

@@ -69,7 +69,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="T3Q-AS-7t6" id="Way-cX-xIf"/>
                         <outlet property="cameraButton" destination="w7m-tS-3pE" id="Hc4-3O-BEF"/>
-                        <outlet property="imgeView" destination="7aw-4n-xzE" id="u5q-gl-rvL"/>
+                        <outlet property="imageView" destination="7aw-4n-xzE" id="T1D-fl-IuX"/>
                         <outlet property="topTextField" destination="lmA-fk-pq5" id="vIz-io-fXH"/>
                     </connections>
                 </viewController>
