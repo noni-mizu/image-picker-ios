@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7aw-4n-xzE">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="MMe-MP-Vgu">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="MMe-MP-Vgu" userLabel="Toolbar lower">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Camera" width="94" id="w7m-tS-3pE" userLabel="cameraButton">
@@ -42,40 +42,40 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uam-Od-33p">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem id="B50-Kl-AMa" userLabel="Share Button">
-                                        <connections>
-                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="FZo-Kx-R3h"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lmA-fk-pq5">
                                 <rect key="frame" x="0.0" y="104" width="600" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no"/>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uam-Od-33p" userLabel="Toolbar upper">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="B50-Kl-AMa" userLabel="Share Button">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="qCu-5J-8fB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.61326261908368795" green="0.95237835473044952" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="trailing" secondItem="T3Q-AS-7t6" secondAttribute="trailing" id="01X-CG-fNH"/>
-                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="2N9-Rl-yPQ"/>
-                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="top" secondItem="7aw-4n-xzE" secondAttribute="bottom" id="43s-oJ-d6P"/>
-                            <constraint firstItem="uam-Od-33p" firstAttribute="top" secondItem="7aw-4n-xzE" secondAttribute="top" id="4qO-Un-c2D"/>
-                            <constraint firstItem="uam-Od-33p" firstAttribute="trailing" secondItem="lmA-fk-pq5" secondAttribute="trailing" id="8Ab-BT-aFV"/>
-                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="leading" secondItem="T3Q-AS-7t6" secondAttribute="leading" id="A2N-ES-oj9"/>
-                            <constraint firstItem="lmA-fk-pq5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Anp-cW-vxy"/>
-                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="trailing" secondItem="7aw-4n-xzE" secondAttribute="trailing" id="SBp-cJ-3On"/>
-                            <constraint firstItem="lmA-fk-pq5" firstAttribute="top" secondItem="uam-Od-33p" secondAttribute="bottom" constant="60" id="YeO-SV-4pG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7aw-4n-xzE" secondAttribute="trailing" constant="-20" id="hG8-qN-nmi"/>
-                            <constraint firstItem="uam-Od-33p" firstAttribute="leading" secondItem="lmA-fk-pq5" secondAttribute="leading" id="iXe-A8-y5C"/>
-                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="leading" secondItem="7aw-4n-xzE" secondAttribute="leading" id="j9G-bV-luN"/>
-                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="top" secondItem="T3Q-AS-7t6" secondAttribute="bottom" constant="75" id="lXM-c6-Byr"/>
-                            <constraint firstItem="7aw-4n-xzE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="usF-6v-aab"/>
-                            <constraint firstItem="7aw-4n-xzE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="v2E-la-DaN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lmA-fk-pq5" secondAttribute="trailing" constant="-20" id="vth-sP-1hz"/>
+                            <constraint firstItem="7aw-4n-xzE" firstAttribute="leading" secondItem="T3Q-AS-7t6" secondAttribute="leading" id="4Fw-5R-t4S"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MMe-MP-Vgu" secondAttribute="bottom" id="7NS-rE-W57"/>
+                            <constraint firstItem="7aw-4n-xzE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="8X1-Ol-Adc"/>
+                            <constraint firstItem="lmA-fk-pq5" firstAttribute="top" secondItem="uam-Od-33p" secondAttribute="bottom" constant="60" id="HH6-An-7km"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7aw-4n-xzE" secondAttribute="trailing" constant="-20" id="HXR-ee-GFb"/>
+                            <constraint firstItem="uam-Od-33p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ORC-J2-wEM"/>
+                            <constraint firstItem="7aw-4n-xzE" firstAttribute="leading" secondItem="lmA-fk-pq5" secondAttribute="leading" id="Pfn-0t-eqQ"/>
+                            <constraint firstItem="7aw-4n-xzE" firstAttribute="trailing" secondItem="lmA-fk-pq5" secondAttribute="trailing" id="UdQ-jQ-5Rt"/>
+                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="cx2-Kd-Qyp"/>
+                            <constraint firstItem="MMe-MP-Vgu" firstAttribute="top" secondItem="T3Q-AS-7t6" secondAttribute="bottom" constant="75" id="fOE-TP-Had"/>
+                            <constraint firstItem="7aw-4n-xzE" firstAttribute="bottom" secondItem="MMe-MP-Vgu" secondAttribute="top" id="geW-uT-UVa"/>
+                            <constraint firstItem="7aw-4n-xzE" firstAttribute="trailing" secondItem="T3Q-AS-7t6" secondAttribute="trailing" id="l8J-3G-Tw3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uam-Od-33p" secondAttribute="trailing" constant="-20" id="rMG-XK-vVL"/>
+                            <constraint firstItem="7aw-4n-xzE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vm5-p8-ubz"/>
+                            <constraint firstItem="7aw-4n-xzE" firstAttribute="top" secondItem="uam-Od-33p" secondAttribute="bottom" id="xPn-ER-zbv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MMe-MP-Vgu" secondAttribute="trailing" constant="-20" id="yLW-TH-g5d"/>
                         </constraints>
                     </view>
                     <connections>
@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61" y="372"/>
+            <point key="canvasLocation" x="39" y="429"/>
         </scene>
     </scenes>
 </document>

@@ -42,10 +42,6 @@ class MemeMainViewController: UIViewController, UIImagePickerControllerDelegate,
         // disable share button until you need it
         shareBarButton.enabled = false
         
-        // set action icon for sharing button
-        shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: #selector(self.shareMeme))
-        navigationItem.leftBarButtonItem = shareBarButton
-        
         // assign custom attributes to text fields
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
@@ -186,7 +182,7 @@ class MemeMainViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     // share the meme method
-    @IBAction func shareMeme(sender: AnyObject) {
+   @IBAction func shareMeme(sender: AnyObject) {
         
         // instantiate activity view controller
         let activityViewController = UIActivityViewController.init(activityItems: [generateMemedImage()], applicationActivities: nil)
