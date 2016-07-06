@@ -73,6 +73,10 @@ class MemeMainViewController: UIViewController, UIImagePickerControllerDelegate,
         subscribeToKeyboardNotifications()
         
     }
+    
+    func dismissVC(){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
     // one of two optional methods from UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController,
@@ -81,7 +85,7 @@ class MemeMainViewController: UIViewController, UIImagePickerControllerDelegate,
         // retreives image from the image picker, puts in your imagePickerView
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
-            dismissViewControllerAnimated(true, completion: nil)
+            dismissVC()
         }
     }
     
@@ -89,7 +93,7 @@ class MemeMainViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerControllerDidCancel(picker: UIImagePickerController){
         
         // dismisses the image picker
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissVC()
     }
     
     // Move the view up/down when the keyboard pops up over lower text field
@@ -119,37 +123,56 @@ class MemeMainViewController: UIViewController, UIImagePickerControllerDelegate,
     func unsubscribeFromKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
+    
+    func endEditing(){
+        view.endEditing(true)
+    }
 
     // when press return in text field, keyboard dismisses
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        view.endEditing(true)
+        endEditing()
         return false
     }
     
     // Calls this function when the tap on background is recognized.
     func dismissKeyboard() {
         // Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+        endEditing()
     }
     
-    // picks image from camera
-    @IBAction func pickImage(sender: AnyObject) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = UIImagePickerControllerSourceType.Camera
-        presentViewController(pickerController, animated: true, completion: nil)
-    }
-    
-    // picks a photo from photo album
-    @IBAction func pickAnImageFromAlbum (sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        presentViewController(imagePicker, animated: true, completion: nil)
+    // picks a photo from either camera or album
+    @IBAction func pickImage (sender: UIBarButtonItem) {
+        var imagePicker = UIImagePickerController()
+        if (sender == cameraButton){
+            imagePicker = configurePicker(.Camera)
+        } else {
+            imagePicker = configurePicker(.PhotoLibrary)
+        }
+            
+        presentPickerController(imagePicker)
         
-        // enable the share button, since you have a meme now
+        // enable share button, now that you have an image to share
         shareBarButton.enabled = true
+    }
+
+  
+    func configurePicker(type: UIImagePickerControllerSourceType) -> UIImagePickerController{
+       
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = type
+        imagePicker.delegate = self
         
+        return imagePicker
+        
+    }
+    
+    func presentPickerController(picker: UIImagePickerController){
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    
+    func presentVC(controller: UIActivityViewController){
+        presentViewController(controller, animated: true, completion: nil)
     }
     
     // CREATE MEME OBJECT, SAVE IT
@@ -187,8 +210,10 @@ class MemeMainViewController: UIViewController, UIImagePickerControllerDelegate,
         // instantiate activity view controller
         let activityViewController = UIActivityViewController.init(activityItems: [generateMemedImage()], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
+    
         // present the view controller
-        presentViewController(activityViewController, animated: true, completion: nil)
+        presentVC(activityViewController)
+    
         // save it in the completionWithItemsHandler closure
         activityViewController.completionWithItemsHandler = {(activityType, completed:Bool, returnedItems:[AnyObject]?, error: NSError?) in
             
