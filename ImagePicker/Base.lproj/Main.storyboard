@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7aw-4n-xzE">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="MMe-MP-Vgu" userLabel="Toolbar lower">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -54,9 +57,6 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7aw-4n-xzE">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.61326261908368795" green="0.95237835473044952" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
